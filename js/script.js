@@ -20,32 +20,6 @@ if (navToggle && mainNav) {
   });
 }
 
-// ---------- Revelar elementos al hacer scroll ----------
-const revealEls = document.querySelectorAll('.reveal');
-
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  revealEls.forEach((el) => observer.observe(el));
-
-  // Red de seguridad: si algo bloquea el observer, el contenido igual aparece.
-  setTimeout(() => {
-    revealEls.forEach((el) => el.classList.add('is-visible'));
-  }, 2500);
-} else {
-  revealEls.forEach((el) => el.classList.add('is-visible'));
-}
-
 // ---------- Envío de formulario de contacto ----------
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
