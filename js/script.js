@@ -37,6 +37,11 @@ if ('IntersectionObserver' in window) {
   );
 
   revealEls.forEach((el) => observer.observe(el));
+
+  // Red de seguridad: si algo bloquea el observer, el contenido igual aparece.
+  setTimeout(() => {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
+  }, 2500);
 } else {
   revealEls.forEach((el) => el.classList.add('is-visible'));
 }
