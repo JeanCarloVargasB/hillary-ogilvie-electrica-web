@@ -23,34 +23,19 @@ simple, por ejemplo:
 npx serve .
 ```
 
-## Pendiente antes de publicar: activar el formulario de contacto
+## Formulario de contacto
 
-El formulario de la sección "Contacto" está listo visualmente, pero necesita conectarse a un
-servicio que envíe los datos al correo **hillaryogilvieg@gmail.com** (una página estática no puede
-enviar correos por sí sola). Se usó [Formspree](https://formspree.io) porque es gratuito, no
-requiere backend propio y se integra con una sola línea:
+El formulario de la sección "Contacto" envía los datos mediante
+[Formspree](https://formspree.io) (gratuito, sin backend propio) al correo
+**hillaryogilvieg@gmail.com**. Ya está conectado al formulario
+`https://formspree.io/f/xwlkwwbd`, creado con esa misma cuenta de Gmail.
 
-1. Crear una cuenta gratuita en https://formspree.io usando el correo `hillaryogilvieg@gmail.com`.
-2. Crear un nuevo formulario ("New Form") y confirmar el correo de verificación que llega a esa
-   bandeja.
-3. Copiar el ID del formulario que te da Formspree (algo como `xayzabcd`).
-4. En [index.html](index.html), reemplazar `TU_ID_DE_FORMSPREE` en esta línea:
-
-   ```html
-   <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
-   ```
-
-   por el ID real, por ejemplo:
-
-   ```html
-   action="https://formspree.io/f/xayzabcd"
-   ```
-
-5. Guardar, subir el cambio a Git y volver a desplegar. Listo: cada envío del formulario llegará
-   directo a `hillaryogilvieg@gmail.com`, indicando si es una consulta **Personal** o de **Empresa**.
-
+Cada envío llega directo a esa bandeja, indicando si la consulta es **Personal** o de **Empresa**.
 El plan gratuito de Formspree permite 50 envíos por mes, más que suficiente para un portafolio
 profesional. Si en el futuro se necesita más volumen, se puede subir de plan sin tocar el código.
+
+Si alguna vez hay que cambiar de formulario, el único lugar a editar es el atributo `action` del
+`<form>` en [index.html](index.html).
 
 ## Botón de WhatsApp
 
