@@ -1,3 +1,18 @@
+// ---------- Barra de progreso "eléctrica" al hacer scroll ----------
+// Mejora puramente decorativa: si falla, no afecta la visibilidad del sitio.
+const scrollFill = document.getElementById('scroll-power-fill');
+if (scrollFill) {
+  const updateScrollPower = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollFill.style.width = pct + '%';
+  };
+  updateScrollPower();
+  window.addEventListener('scroll', updateScrollPower, { passive: true });
+  window.addEventListener('resize', updateScrollPower);
+}
+
 // ---------- Año dinámico en footer ----------
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -52,7 +67,7 @@ if (contactForm && formStatus) {
       }
     } catch (error) {
       formStatus.textContent =
-        'No se pudo enviar el mensaje. Por favor, escríbeme directamente por WhatsApp o al correo hiiogilvie@gmail.com.';
+        'No se pudo enviar el mensaje. Por favor, escríbeme directamente por WhatsApp o al correo hillaryogilvieg@gmail.com.';
       formStatus.classList.add('err');
     } finally {
       submitBtn.disabled = false;

@@ -26,11 +26,11 @@ npx serve .
 ## Pendiente antes de publicar: activar el formulario de contacto
 
 El formulario de la sección "Contacto" está listo visualmente, pero necesita conectarse a un
-servicio que envíe los datos al correo **hiiogilvie@gmail.com** (una página estática no puede
+servicio que envíe los datos al correo **hillaryogilvieg@gmail.com** (una página estática no puede
 enviar correos por sí sola). Se usó [Formspree](https://formspree.io) porque es gratuito, no
 requiere backend propio y se integra con una sola línea:
 
-1. Crear una cuenta gratuita en https://formspree.io usando el correo `hiiogilvie@gmail.com`.
+1. Crear una cuenta gratuita en https://formspree.io usando el correo `hillaryogilvieg@gmail.com`.
 2. Crear un nuevo formulario ("New Form") y confirmar el correo de verificación que llega a esa
    bandeja.
 3. Copiar el ID del formulario que te da Formspree (algo como `xayzabcd`).
@@ -47,7 +47,7 @@ requiere backend propio y se integra con una sola línea:
    ```
 
 5. Guardar, subir el cambio a Git y volver a desplegar. Listo: cada envío del formulario llegará
-   directo a `hiiogilvie@gmail.com`, indicando si es una consulta **Personal** o de **Empresa**.
+   directo a `hillaryogilvieg@gmail.com`, indicando si es una consulta **Personal** o de **Empresa**.
 
 El plan gratuito de Formspree permite 50 envíos por mes, más que suficiente para un portafolio
 profesional. Si en el futuro se necesita más volumen, se puede subir de plan sin tocar el código.
