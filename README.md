@@ -1,68 +1,101 @@
 # Página web — Hillary Ogilvie Gamboa
 
-Sitio web profesional (HTML, CSS y JavaScript puro, sin frameworks ni build step) para portafolio y
-contratación de servicios de ingeniería eléctrica, electrónica industrial y mecatrónica.
+Portafolio profesional de Ingeniería Eléctrica, Electrónica Industrial y Mecatrónica, construido con
+**React + Vite + Tailwind CSS v4 + Framer Motion**.
+
+## Stack
+
+- **Vite** — build tool y servidor de desarrollo.
+- **React 19** — componentes de la interfaz.
+- **Tailwind CSS v4** (`@tailwindcss/vite`) — estilos, con la paleta de marca definida en
+  [src/index.css](src/index.css) (`@theme`).
+- **Framer Motion** — animación de entrada (logo + rayos), barra de progreso al hacer scroll,
+  menú móvil y aparición de secciones al hacer scroll.
 
 ## Estructura
 
 ```
 HillaryOgilvie-Web/
-├── index.html
-├── css/style.css
-├── js/script.js
-├── assets/logo.png
-└── README.md
+├── index.html              # punto de entrada de Vite
+├── public/assets/          # logo, gif animado, fotos de proyectos (se sirven tal cual)
+├── src/
+│   ├── main.jsx
+│   ├── App.jsx              # arma todas las secciones
+│   ├── index.css            # tema de Tailwind (colores, fuentes, animaciones de circuito)
+│   ├── data/content.js      # textos, servicios, proyectos y datos de contacto centralizados
+│   └── components/
+│       ├── IntroAnimation.jsx   # animación de entrada: logo cae + rayos rosados
+│       ├── ElectricBackground.jsx # rayos y luces de fondo, fijos en toda la página
+│       ├── ScrollPowerBar.jsx   # barra "eléctrica" de progreso de scroll
+│       ├── Header.jsx, Hero.jsx, About.jsx, Formacion.jsx, Servicios.jsx,
+│       │   Portafolio.jsx, Contacto.jsx, Footer.jsx, WhatsAppFloat.jsx
+│       └── Section.jsx, LightningBolt.jsx, ServiceIcon.jsx, WhatsAppIcon.jsx
+├── wrangler.jsonc           # despliegue a Cloudflare Workers (assets.directory: "dist")
+└── package.json
 ```
 
-## Ver el sitio en local
+## Desarrollo local
 
-No requiere instalación. Basta con abrir `index.html` en el navegador, o levantar un servidor
-simple, por ejemplo:
+Requiere Node 20+.
 
 ```bash
-npx serve .
+npm install
+npm run dev
+```
+
+Abre la URL que muestra la terminal (por defecto `http://localhost:5173`).
+
+Para generar la versión de producción:
+
+```bash
+npm run build      # genera la carpeta dist/
+npm run preview    # sirve dist/ localmente para probarla antes de publicar
 ```
 
 ## Formulario de contacto
 
 El formulario de la sección "Contacto" envía los datos mediante
 [Formspree](https://formspree.io) (gratuito, sin backend propio) al correo
-**hillaryogilvieg@gmail.com**. Ya está conectado al formulario
-`https://formspree.io/f/xwlkwwbd`, creado con esa misma cuenta de Gmail.
+**hillaryogilvieg@gmail.com**. El endpoint está en
+[src/data/content.js](src/data/content.js) (`formspreeAction`), conectado a
+`https://formspree.io/f/xwlkwwbd`.
 
 Cada envío llega directo a esa bandeja, indicando si la consulta es **Personal** o de **Empresa**.
-El plan gratuito de Formspree permite 50 envíos por mes, más que suficiente para un portafolio
-profesional. Si en el futuro se necesita más volumen, se puede subir de plan sin tocar el código.
-
-Si alguna vez hay que cambiar de formulario, el único lugar a editar es el atributo `action` del
-`<form>` en [index.html](index.html).
+El plan gratuito de Formspree permite 50 envíos por mes. Si alguna vez hay que cambiar de
+formulario, el único lugar a editar es `formspreeAction` en ese archivo.
 
 ## Botón de WhatsApp
 
-El número configurado es **8746-4466** (Costa Rica, +506), tanto en el botón flotante como en el
-del encabezado y la sección de contacto. Si el número cambia, buscar `50687464466` en
-[index.html](index.html) y reemplazarlo en las 3 apariciones.
+El número configurado es **8746-4466** (Costa Rica, +506). Está centralizado en
+[src/data/content.js](src/data/content.js) (`whatsappNumber`) — cambiarlo ahí actualiza el botón
+flotante, el del encabezado, el del hero y el de la sección de contacto a la vez.
 
-## Despliegue con Git + Cloudflare Pages
+## Despliegue con Git + Cloudflare
 
-Igual que con jcsystemscr.com:
+El proyecto está conectado a Cloudflare (Workers & Pages → `hillary-ogilvie-electrica-web`), que
+despliega automáticamente con cada `git push` a `main`.
 
-1. Inicializar el repositorio (si no se ha hecho):
-   ```bash
-   git init
-   git add .
-   git commit -m "Sitio web inicial de Hillary Ogilvie"
-   ```
-2. Subirlo a GitHub/GitLab (crear el repositorio remoto y hacer `git push`).
-3. En Cloudflare Pages: **Create a project → Connect to Git**, seleccionar el repositorio.
-4. Build settings: no requiere build command ni carpeta de salida especial (es un sitio estático),
-   dejar el "Build output directory" como `/` (raíz del proyecto).
-5. Conectar el dominio deseado en **Custom domains** dentro del proyecto de Cloudflare Pages.
+**Importante:** como ahora el sitio necesita compilarse (ya no son archivos estáticos sueltos), en
+el dashboard de Cloudflare, dentro del proyecto → **Settings → Build**, el **Build command** debe
+ser:
+
+```
+npm install && npm run build
+```
+
+y el **Deploy command** se mantiene como `npx wrangler deploy` (usa [wrangler.jsonc](wrangler.jsonc),
+que ya apunta a la carpeta compilada `dist/`).
+
+Para conectar o cambiar el dominio: **Settings → Domains & Routes → Add Custom Domain**.
 
 ## Personalización futura
 
-- **Portafolio**: reemplazar las tarjetas "Próximamente" de la sección `#portafolio` en
-  [index.html](index.html) por proyectos reales (fotos, descripción, resultados).
-- **Colores**: toda la paleta (lila, morado, rosa, blanco) está centralizada como variables CSS al
-  inicio de [style.css](css/style.css), en `:root`.
-- **Logo**: el archivo usado es [assets/logo.png](assets/logo.png).
+- **Textos, servicios y proyectos del portafolio**: todo centralizado en
+  [src/data/content.js](src/data/content.js) — no hace falta tocar los componentes para
+  agregar/editar un proyecto o servicio.
+- **Colores**: paleta lila/morado/rosa/blanco definida en [src/index.css](src/index.css)
+  dentro de `@theme`.
+- **Fotos de proyectos**: agregar la imagen en `public/assets/` y referenciarla en
+  `src/data/content.js`.
+- **Logos**: `public/assets/logo.png` (header, footer) y `public/assets/logo-hero.gif`
+  (animación de entrada y hero).
