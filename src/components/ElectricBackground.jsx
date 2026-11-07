@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
-import LightningBolt from './LightningBolt.jsx'
+import DecorativeBolt from './DecorativeBolt.jsx'
 
 const bolts = [
-  { className: 'w-28 -left-6 top-[8%] -rotate-12 text-purple opacity-[0.10]', delay: 0 },
-  { className: 'w-40 right-[4%] top-[32%] rotate-[14deg] text-pink opacity-[0.12]', delay: 0.6 },
-  { className: 'w-24 left-[8%] top-[58%] rotate-6 text-purple-light opacity-[0.10]', delay: 1.1 },
-  { className: 'w-36 right-[10%] top-[78%] -rotate-[10deg] text-pink opacity-[0.10]', delay: 0.3 },
-  { className: 'w-20 left-[46%] top-[92%] rotate-12 text-purple opacity-[0.08]', delay: 0.9 },
+  { pos: 'w-28 -left-6 top-[8%] text-purple', rotate: -12, opacity: 0.16, duration: 7, driftY: 16, driftX: 6 },
+  { pos: 'w-40 right-[4%] top-[32%] text-pink', rotate: 14, opacity: 0.18, duration: 8.5, driftY: -18, driftX: -8 },
+  { pos: 'w-24 left-[8%] top-[58%] text-purple-light', rotate: 6, opacity: 0.16, duration: 6.5, driftY: 14, driftX: -5 },
+  { pos: 'w-36 right-[10%] top-[78%] text-pink', rotate: -10, opacity: 0.16, duration: 9, driftY: -16, driftX: 7 },
+  { pos: 'w-20 left-[46%] top-[92%] text-purple', rotate: 12, opacity: 0.13, duration: 7.5, driftY: 12, driftX: 5 },
 ]
 
 const orbs = [
@@ -16,8 +16,9 @@ const orbs = [
 ]
 
 /**
- * Capa de fondo decorativa, fija y persistente en toda la pagina:
- * puntos de circuito + rayos + luces difusas, con animacion sutil.
+ * Capa de fondo decorativa, fija y persistente en toda la pagina: luces
+ * difusas que laten suavemente, y rayos que se mecen a la deriva con
+ * corriente electrica "viajando" a traves de ellos (en vez de parpadear).
  */
 export default function ElectricBackground() {
   return (
@@ -34,14 +35,15 @@ export default function ElectricBackground() {
       ))}
 
       {bolts.map((bolt, i) => (
-        <motion.div
+        <DecorativeBolt
           key={i}
-          className={`absolute ${bolt.className}`}
-          animate={{ opacity: [1, 0.4, 1] }}
-          transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut', delay: bolt.delay }}
-        >
-          <LightningBolt className="w-full h-auto" />
-        </motion.div>
+          className={bolt.pos}
+          rotate={bolt.rotate}
+          opacity={bolt.opacity}
+          duration={bolt.duration}
+          driftY={bolt.driftY}
+          driftX={bolt.driftX}
+        />
       ))}
     </div>
   )

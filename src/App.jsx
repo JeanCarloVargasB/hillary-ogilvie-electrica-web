@@ -7,6 +7,7 @@ import About from './components/About.jsx'
 import Formacion from './components/Formacion.jsx'
 import Servicios from './components/Servicios.jsx'
 import Portafolio from './components/Portafolio.jsx'
+import MasServicios from './components/MasServicios.jsx'
 import Contacto from './components/Contacto.jsx'
 import Footer from './components/Footer.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
@@ -25,6 +26,7 @@ export default function App() {
         <Formacion />
         <Servicios />
         <Portafolio />
+        <MasServicios />
         <Contacto />
       </main>
       <Footer />

@@ -48,33 +48,40 @@ export default function IntroAnimation({ onDone }) {
             </motion.div>
           ))}
 
-          <motion.div
-            className="relative"
-            initial={{ y: -420, opacity: 0, rotate: -6 }}
-            animate={{ y: 0, opacity: 1, rotate: 0 }}
-            transition={{ type: 'spring', bounce: 0.48, duration: 1.1, delay: 0.1 }}
-          >
+          <div className="relative flex flex-col items-center gap-5">
             <motion.div
-              className="absolute inset-0 rounded-3xl bg-pink/40 blur-2xl"
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: [0, 0.9, 0.4], scale: [0.6, 1.5, 1.2] }}
-              transition={{ duration: 0.7, delay: 1.05 }}
-            />
-            <img
-              src="/assets/logo-hero.gif"
-              alt="Hillary Ogilvie"
-              className="relative w-36 sm:w-44 rounded-2xl shadow-[0_20px_50px_rgba(75,46,131,0.35)]"
-            />
-          </motion.div>
+              className="relative"
+              initial={{ y: -420, opacity: 0, rotate: -6 }}
+              animate={{ y: 0, opacity: 1, rotate: 0 }}
+              transition={{ type: 'spring', bounce: 0.48, duration: 1.1, delay: 0.1 }}
+            >
+              <motion.div
+                className="absolute inset-0 rounded-3xl bg-pink/40 blur-2xl"
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: [0, 0.9, 0.4], scale: [0.6, 1.5, 1.2] }}
+                transition={{ duration: 0.7, delay: 1.05 }}
+              />
+              <img
+                src="/assets/logo-hero.gif"
+                alt="Hillary Ogilvie"
+                className="relative w-36 sm:w-44 rounded-2xl shadow-[0_20px_50px_rgba(75,46,131,0.35)]"
+              />
+            </motion.div>
 
-          <motion.p
-            className="absolute bottom-10 text-sm font-semibold text-purple-deep/70 tracking-wide"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.5 }}
-          >
-            Hillary Ogilvie Gamboa · Ingeniera Eléctrica
-          </motion.p>
+            <motion.div
+              className="text-center"
+              initial={{ y: -40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ type: 'spring', bounce: 0.4, duration: 0.9, delay: 0.1 }}
+            >
+              <p className="font-head font-extrabold text-xl sm:text-2xl text-purple-deep">
+                Hillary <span className="text-gradient">Ogilvie</span>
+              </p>
+              <p className="text-sm sm:text-base font-semibold text-purple tracking-wide mt-1">
+                Ingeniera Eléctrica &middot; Mecatrónica Industrial
+              </p>
+            </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

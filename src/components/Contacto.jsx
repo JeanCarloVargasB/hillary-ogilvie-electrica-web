@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Section, { Reveal } from './Section.jsx'
 import LightningBolt from './LightningBolt.jsx'
+import DecorativeBolt from './DecorativeBolt.jsx'
 import WhatsAppIcon from './WhatsAppIcon.jsx'
 import { email, formspreeAction, whatsappDisplay, whatsappLink } from '../data/content.js'
 
@@ -43,9 +44,13 @@ export default function Contacto() {
 
   return (
     <Section id="contacto" className="relative overflow-hidden py-24">
-      <LightningBolt
-        solid
-        className="hidden sm:block absolute w-44 opacity-[0.15] text-pink top-[10%] -right-8 rotate-[18deg]"
+      <DecorativeBolt
+        className="hidden sm:block w-44 text-pink top-[10%] -right-8"
+        rotate={18}
+        opacity={0.18}
+        duration={8.5}
+        driftY={-14}
+        driftX={-6}
       />
 
       <div className="relative z-10 w-[92%] max-w-[1140px] mx-auto">

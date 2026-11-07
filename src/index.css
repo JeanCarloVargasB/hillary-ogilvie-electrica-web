@@ -88,6 +88,27 @@ h1, h2, h3 {
   }
 }
 
+/* ---------- Corriente viajando a traves de un rayo decorativo ---------- */
+.bolt-current {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, white 12%, white 24%, transparent 38%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, white 12%, white 24%, transparent 38%, transparent 100%);
+  -webkit-mask-size: 100% 320%;
+  mask-size: 100% 320%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: bolt-current-flow 2.4s linear infinite;
+}
+@keyframes bolt-current-flow {
+  from {
+    -webkit-mask-position: 0 -220%;
+    mask-position: 0 -220%;
+  }
+  to {
+    -webkit-mask-position: 0 100%;
+    mask-position: 0 100%;
+  }
+}
+
 @keyframes spark-flicker {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.55; }

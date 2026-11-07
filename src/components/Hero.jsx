@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import LightningBolt from './LightningBolt.jsx'
+import DecorativeBolt from './DecorativeBolt.jsx'
 import WhatsAppIcon from './WhatsAppIcon.jsx'
 import { Reveal } from './Section.jsx'
 import { whatsappLink } from '../data/content.js'
@@ -13,13 +13,21 @@ const stats = [
 export default function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-gradient-soft pt-24 pb-16">
-      <LightningBolt
-        solid
-        className="hidden sm:block absolute w-36 opacity-[0.18] text-purple -top-5 -left-5 -rotate-12"
+      <DecorativeBolt
+        className="hidden sm:block w-36 text-purple -top-5 -left-5"
+        rotate={-12}
+        opacity={0.2}
+        duration={7.5}
+        driftY={18}
+        driftX={8}
       />
-      <LightningBolt
-        solid
-        className="hidden sm:block absolute w-48 opacity-[0.22] text-pink -bottom-10 right-[4%] rotate-12 scale-125"
+      <DecorativeBolt
+        className="hidden sm:block w-48 text-pink -bottom-10 right-[4%] scale-125"
+        rotate={12}
+        opacity={0.24}
+        duration={8}
+        driftY={-16}
+        driftX={-7}
       />
 
       <div className="relative z-10 w-[92%] max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] items-center gap-12">

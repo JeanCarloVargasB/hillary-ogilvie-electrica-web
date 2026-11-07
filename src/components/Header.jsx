@@ -16,7 +16,7 @@ export default function Header() {
           </span>
         </a>
 
-        <nav className="hidden md:flex gap-7">
+        <nav className="hidden lg:flex gap-5">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -41,7 +41,7 @@ export default function Header() {
           </a>
 
           <button
-            className="md:hidden flex flex-col gap-1.5 p-1.5"
+            className="lg:hidden flex flex-col gap-1.5 p-1.5"
             aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -69,7 +69,7 @@ export default function Header() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-white shadow-md"
+            className="lg:hidden overflow-hidden bg-white shadow-md"
           >
             <div className="flex flex-col gap-4 px-6 py-5">
               {navLinks.map((link) => (

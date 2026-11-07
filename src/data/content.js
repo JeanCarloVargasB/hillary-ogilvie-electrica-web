@@ -12,6 +12,7 @@ export const navLinks = [
   { href: '#formacion', label: 'Formación' },
   { href: '#servicios', label: 'Servicios' },
   { href: '#portafolio', label: 'Portafolio' },
+  { href: '#mas-servicios', label: 'Más servicios' },
   { href: '#contacto', label: 'Contacto' },
 ]
 
@@ -64,6 +65,27 @@ export const servicios = [
     icon: 'projects',
     title: 'Proyectos residenciales & empresariales',
     description: 'Asesoría, supervisión y ejecución de proyectos eléctricos a la medida de personas y empresas.',
+  },
+]
+
+export const serviciosAdicionales = [
+  {
+    icon: 'machine',
+    title: 'Mantenimiento de máquinas industriales',
+    description:
+      'Diagnóstico, reparación y mantenimiento preventivo de maquinaria de producción: motores, bandas, sensores y sistemas de control asociados.',
+  },
+  {
+    icon: 'blueprint',
+    title: 'Diseño de planos eléctricos',
+    description:
+      'Elaboración de planos y diagramas unifilares para instalaciones residenciales, comerciales e industriales, listos para construcción o trámite.',
+  },
+  {
+    icon: 'energy',
+    title: 'Eficiencia energética y ahorro eléctrico',
+    description:
+      'Análisis de consumo y recomendaciones técnicas para reducir el gasto eléctrico sin sacrificar desempeño, en hogares y empresas.',
   },
 ]
 
